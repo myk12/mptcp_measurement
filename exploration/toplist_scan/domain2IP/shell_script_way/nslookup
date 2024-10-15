@@ -1,0 +1,24 @@
+#/bin/bash
+
+#!/bin/bash
+input_file="$1"
+output_file="${input_file//domain_name/domain_ip}"
+touch $output_file
+
+total_line=$(wc -l < "$input_file")
+
+echo "Domain,IPv4" > "$output_file"
+
+cnt=0
+while IFS=, read -r domain; do
+    cnt=$((cnt + 1))
+    ipv4_list=$(adnshost -A4 "$domain" | grep "INET" | awk '{print$4}' | tr '\n' ',' | sed 's/,$//')
+    if [ -n "$ipv4_list" ]; then
+        echo "$domain,$ipv4_list" >> "$output_file"
+    else
+        echo "$domain" >> "$output_file"
+    fi
+    echo -ne "\n[$cnt/$total_line] $domain"
+done < "$input_file"
+
+echo "IPv4 mapping saved to $output_file"

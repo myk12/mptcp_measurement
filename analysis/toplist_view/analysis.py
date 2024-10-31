@@ -131,7 +131,7 @@ class TopListAnalysis:
             ax.plot(supported_df['rank'], np.arange(len(supported_df)) / len(supported_df), label='Support')
             ax.plot(mirror_df['rank'], np.arange(len(mirror_df)) / len(mirror_df), label='Mirror')
             ax.legend()
-        plt.savefig("mptcp_analysis.pdf".format(target))
+        plt.savefig("mptcp_analysis.png".format(target))
         plt.close()
     
     def display_data(self):

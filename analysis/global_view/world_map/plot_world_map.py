@@ -38,5 +38,5 @@ m2.scatter(scaned_lons, scaned_lats, s=1, latlon=True, c='blue', marker='o')
 
 # 保存为PDF文件
 plt.tight_layout()
-plt.savefig('geographic_locations_basemap.pdf', dpi=300)
+plt.savefig('geographic_locations_basemap.png', dpi=300)
 

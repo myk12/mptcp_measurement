@@ -72,7 +72,7 @@ class MPTCPHostsAnalysis:
         print(top_values_df.to_latex(index=False))
 
         # output as table in pdf
-        doc = SimpleDocTemplate("top10.pdf", pagesize=letter)
+        doc = SimpleDocTemplate("top10.png", pagesize=letter)
         elements = []
         data = top_values_df.values.tolist()
         table = Table(data)
